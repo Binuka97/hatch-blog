@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import './PostList.css';
 import {Link} from 'react-router-dom'; 
 
+
+
+import PostDetailedView from './PostDetailedView'
+
 class PostList extends Component{
 
 state = {
