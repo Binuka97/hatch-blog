@@ -12,6 +12,7 @@ class PostDetailedView extends Component {
         const response = await fetch(url);
         const data = await response.json();
         this.setState({person: data[0], loading:false})
+        console.log(data)
         
     }
     render() {
