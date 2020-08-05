@@ -1,39 +1,48 @@
 import React, {Component} from 'react';
 import './PostList.css';
 import {Link} from 'react-router-dom'; 
+
 class PostList extends Component{
 
-    state={
-        isOpen:false
-    }
+state = {
+  loading:true,
+  posts:[]
+}
 
-    handleClick=()=>{
-        this.setState({
-            isOpen:!this.state.isOpen,
-        })
+  componentDidMount(){
+    this.fetchData()
+  }
+
+fetchData = async ()=>{
+        const url = "https://jsonplaceholder.typicode.com/posts";
+        const response = await fetch(url);
+        const data = await response.json();
+        this.setState({posts: data[0], loading:false})
+        console.log(data)
+}
+
+    renderItem = ({title})=>{
+    return (<li> <Link to='/PostDetailedView'>{title}</Link></li>)
     }
 
     render(){
+      console.log('renderring... ', this.state)
+
         return(
+          <div>
 
-            <nav>
-
-        <div className= "btn" onClick={this.handleClick} >
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
+       {this.state.isModalVisible && <div>
+          <h2>new post modal</h2>
         </div>
+    }
+        <ul>
+         {this.renderItem({title:'asdfafasf', body:'asdfafdasfas'})}
 
-        <ul className={this.state.isOpen ? 'showList' : 'undefined'}>
-          <li> <Link to='/PostDetailedView' href= "#"> List 1 </Link></li>
-          <li> <a href= "#"> List 2 </a></li>
-          <li> <a href= "#"> List 3 </a></li>
-          <li> <a href= "#"> List 4 </a></li>
-        
+         
+         
         </ul>
-
-      </nav>
+</div>
+     
         )
     }
 }
