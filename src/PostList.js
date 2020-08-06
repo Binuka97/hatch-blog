@@ -90,14 +90,7 @@ fetchData = async ()=>{
     
             <ul>
 
-              {this.state.posts.map(function (item, index) {
-                return (
-                  <p>{item.title}</p>
-
- 
-                )
-              }
-              )}
+            {this.state.posts.map(this.renderItem)}
             </ul>
 </div>
      
