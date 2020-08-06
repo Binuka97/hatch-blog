@@ -27,9 +27,13 @@ fetchData = async ()=>{
         console.log(data)
 }
 
-    renderItem = ({title})=>{
-    return (<li> <Link to='/PostDetailedView'>{title}</Link></li>)
+    renderItem = (post)=>{
+    return (<li key={post.title}><Link to={{pathname:'/PostDetailedView', state: {post}}}>{post.title}</Link></li>)
     }
+
+    renderItem2 = (post)=>{
+        return (<li key={post.title}><Link to={{pathname:`/PostDetailedView/${post.id}`, state: {post}}}>{post.title}</Link></li>)
+        }
 
     toggleModal = () => {
         this.setState({

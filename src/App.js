@@ -8,24 +8,17 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 function App() {
   return (
     <Router>
-   
-     
-       
-
+  
       <Switch>
         
         <Route exact path="/" component={PostList} />
         <Route exact path="/PostDetailedView" component={PostDetailedView} />
-
-
-        
+        {/* <Route exact path="/PostDetailedView/:postId" component={PostDetailedView2} /> */}
+ 
       </Switch>
-
      
     </Router>
-      
-      
-
+ 
   );
 }
 
