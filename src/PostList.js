@@ -22,7 +22,7 @@ fetchData = async ()=>{
         const url = "https://jsonplaceholder.typicode.com/posts";
         const response = await fetch(url);
         const data = await response.json();
-        this.setState({posts: data[0], loading:false})
+        this.setState({posts: data, loading:false})
         console.log(data)
 }
 
@@ -79,10 +79,17 @@ fetchData = async ()=>{
            </Modal>
         </div>
     }
-        <ul>
-         {this.renderItem({title:'asdfafasf', body:'asdfafdasfas'})}
+            <ul>
 
-        </ul>
+              {this.state.posts.map(function (item, index) {
+                return (
+                  <p>{item.title}</p>
+
+
+                )
+              }
+              )}
+            </ul>
 </div>
      
         )
