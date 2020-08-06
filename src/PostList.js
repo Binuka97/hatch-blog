@@ -10,12 +10,16 @@ state = {
   loading:true,
   isModalVisible:false,
   posts:[],
-  title:null,
-  Description:null
+
+  title:'',
+  description:''
 }
 
   componentDidMount(){
     this.fetchData()
+
+ 
+
   }
 
 fetchData = async ()=>{
@@ -36,9 +40,17 @@ fetchData = async ()=>{
         })
     }
     handleSubmit = () => {
+        // close the modal
+        // save the new post in the comp state
+        let a1 = ['sdaf','2','3']
 
+        a1.push('4')
+        let a2 = [...a1, '4']
+        // call the post request
     }
     handleInputChange = (event) => {
+        event.preventDefault()
+
         console.log(event.target.name)
         this.setState({
             [event.target.name]: event.target.value
@@ -48,7 +60,8 @@ fetchData = async ()=>{
 
     render(){
       console.log('renderring... ', this.state)
-      const {title} = this.state
+      const {title, description} = this.state
+    
       
         return(
           <div>
@@ -63,7 +76,8 @@ fetchData = async ()=>{
                       }
                   }
               } >
-             <p>Title is: {title} </p>     
+             <p>Title is: {title} </p>    
+             <p>Description is: {description} </p>  
             <form onSubmit={this.handleSubmit}>
                <h3>Title :</h3>
                <input type="text" id="title" placeholder="Enter the Title" name="title" onChange={this.handleInputChange}/>
@@ -71,7 +85,7 @@ fetchData = async ()=>{
                <input type="text" id="desc" placeholder="Enter Description" name="description" /> 
                <hr></hr>
 
-                <button onClick={this.toggleModal}>Save & Publish</button>   
+                <button>Save & Publish</button>   
 
             </form>
             
@@ -85,14 +99,14 @@ fetchData = async ()=>{
                 return (
                   <p>{item.title}</p>
 
-
+ 
                 )
               }
               )}
             </ul>
 </div>
      
-        )
+        ) 
     }
 }
 
