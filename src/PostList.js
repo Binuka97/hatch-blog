@@ -89,7 +89,6 @@ fetchData = async ()=>{
         </div>
     
             <ul>
-
             {this.state.posts.map(this.renderItem)}
             </ul>
 </div>
