@@ -9,7 +9,9 @@ class PostList extends Component{
 state = {
   loading:true,
   isModalVisible:false,
-  posts:[]
+  posts:[],
+  title:null,
+  Description:null
 }
 
   componentDidMount(){
@@ -33,13 +35,21 @@ fetchData = async ()=>{
             isModalVisible:!this.state.isModalVisible
         })
     }
-    handleSubmit = (event) => {
+    handleSubmit = () => {
+
+    }
+    handleInputChange = (event) => {
+        console.log(event.target.name)
+        this.setState({
+            [event.target.name]: event.target.value
+        })
 
     }
 
     render(){
       console.log('renderring... ', this.state)
-
+      const {title} = this.state
+      
         return(
           <div>
         <button onClick={this.toggleModal}>Create New Post</button>
@@ -53,11 +63,12 @@ fetchData = async ()=>{
                       }
                   }
               } >
+             <p>Title is: {title} </p>     
             <form onSubmit={this.handleSubmit}>
                <h3>Title :</h3>
-               <input type="text" id="title" placeholder="Enter the Title"/>
+               <input type="text" id="title" placeholder="Enter the Title" name="title" onChange={this.handleInputChange}/>
                <h3>Description :</h3>
-               <input type="text" id="desc" placeholder="Enter Description" /> 
+               <input type="text" id="desc" placeholder="Enter Description" name="description" /> 
                <hr></hr>
 
                 <button onClick={this.toggleModal}>Save & Publish</button>   
