@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import './PostList.css';
 import {Link} from 'react-router-dom'; 
+import  Modal from 'react-modal';
 
-
-
-import PostDetailedView from './PostDetailedView'
-
+Modal.setAppElement('#root')
 class PostList extends Component{
 
 state = {
   loading:true,
+  isModalVisible:false,
   posts:[]
 }
 
@@ -29,21 +28,49 @@ fetchData = async ()=>{
     return (<li> <Link to='/PostDetailedView'>{title}</Link></li>)
     }
 
+    toggleModal = () => {
+        this.setState({
+            isModalVisible:!this.state.isModalVisible
+        })
+    }
+    handleSubmit = (event) => {
+
+    }
+
     render(){
       console.log('renderring... ', this.state)
 
         return(
           <div>
-
+        <button onClick={this.toggleModal}>Create New Post</button>
        {this.state.isModalVisible && <div>
-          <h2>new post modal</h2>
+           
+           <Modal isOpen={this.state.isModalVisible} onRequestClose={this.toggleModal}
+              style={
+                  {
+                      overlay:{
+                          backgroundColor: "grey"
+                      }
+                  }
+              } >
+            <form onSubmit={this.handleSubmit}>
+               <h3>Title :</h3>
+               <input type="text" id="title" placeholder="Enter the Title"/>
+               <h3>Description :</h3>
+               <input type="text" id="desc" placeholder="Enter Description" /> 
+               <hr></hr>
+
+                <button onClick={this.toggleModal}>Save & Publish</button>   
+
+            </form>
+            
+
+           </Modal>
         </div>
     }
         <ul>
          {this.renderItem({title:'asdfafasf', body:'asdfafdasfas'})}
 
-         
-         
         </ul>
 </div>
      

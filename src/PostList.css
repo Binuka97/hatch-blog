@@ -22,3 +22,15 @@ ul li a {
 ul li a:hover {
     background: orange;
 }
+
+#title{
+    height: 25px;
+    width : 300px;
+    }
+
+#desc{
+    height: 95px;
+    width : 500px;
+
+    }
+

@@ -15,11 +15,11 @@ class PostDetailedView extends Component {
         // this.setState({person: data[0], loading:false})
         // console.log(data)
 
-        const url = "https://jsonplaceholder.typicode.com/posts";
-        const response = await fetch(url);
-        const data = await response.json();
-        this.setState({post: data[0], loading:false})
-        console.log(data);
+        // const url = "https://jsonplaceholder.typicode.com/posts";
+        // const response = await fetch(url);
+        // const data = await response.json();
+        // this.setState({post: data[0], loading:false})
+        // console.log(data);
 
         
     } 
@@ -28,7 +28,7 @@ class PostDetailedView extends Component {
             <div>
 
                 
-                  <div> <h1>{'this.state.person.titl'} </h1> </div>
+                  <div> <h1>{'this.state.person.title'} </h1> </div>
                   <br></br>
                   <br></br>
                   <div> <p> {'this.state.person.body'} </p>  </div>
