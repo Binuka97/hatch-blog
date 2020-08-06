@@ -17,9 +17,6 @@ state = {
 
   componentDidMount(){
     this.fetchData()
-
- 
-
   }
 
 fetchData = async ()=>{
@@ -48,6 +45,7 @@ fetchData = async ()=>{
         let a2 = [...a1, '4']
         // call the post request
     }
+
     handleInputChange = (event) => {
         event.preventDefault()
 
@@ -55,19 +53,16 @@ fetchData = async ()=>{
         this.setState({
             [event.target.name]: event.target.value
         })
-
     }
 
     render(){
       console.log('renderring... ', this.state)
       const {title, description} = this.state
     
-      
         return(
           <div>
         <button onClick={this.toggleModal}>Create New Post</button>
-       {this.state.isModalVisible && <div>
-           
+       <div>
            <Modal isOpen={this.state.isModalVisible} onRequestClose={this.toggleModal}
               style={
                   {
@@ -78,21 +73,21 @@ fetchData = async ()=>{
               } >
              <p>Title is: {title} </p>    
              <p>Description is: {description} </p>  
+
             <form onSubmit={this.handleSubmit}>
                <h3>Title :</h3>
                <input type="text" id="title" placeholder="Enter the Title" name="title" onChange={this.handleInputChange}/>
                <h3>Description :</h3>
-               <input type="text" id="desc" placeholder="Enter Description" name="description" /> 
+               <input type="text" id="desc" placeholder="Enter Description" name="description" onChange={this.handleInputChange} /> 
                <hr></hr>
 
                 <button>Save & Publish</button>   
 
             </form>
             
-
            </Modal>
         </div>
-    }
+    
             <ul>
 
               {this.state.posts.map(function (item, index) {
