@@ -32,7 +32,7 @@ fetchData = async ()=>{
     }
 
     renderItem2 = (post)=>{
-        return (<li key={post.title}><Link to={{pathname:`/PostDetailedView/${post.id}`, state: {post}}}>{post.title}</Link></li>)
+        return (<li key={post.title}><Link to={{pathname:`/PostDetailedView/${post.id}`}}>{post.title}</Link></li>)
         }
 
     toggleModal = () => {
@@ -41,13 +41,12 @@ fetchData = async ()=>{
         })
     }
     handleSubmit = () => {
-        // close the modal
-        // save the new post in the comp state
+        
         let a1 = ['sdaf','2','3']
 
         a1.push('4')
         let a2 = [...a1, '4']
-        // call the post request
+        
     }
 
     handleInputChange = (event) => {
